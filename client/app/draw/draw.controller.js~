@@ -1,23 +1,39 @@
 'use strict';
 
 angular.module('ajsApp')
-	.controller('DrawCtrl', function(){
-		
+	.controller('DrawCtrl', function(){	
 	})
 	.directive('chartDraw',[ function() {
 		return {
-		//restrict: 'A',
 			link: function(scope, iElement) {
-			var l;
-			scope.$on('tag', function(event, data) {
-			l = data;
-			console.log('inside'+l);
-		      	var context = iElement[0].getContext('2d');
-			context.fillStyle = '#0000FF';
-		    	context.fillRect(50,12,50,l);
-		});
-
-
-			}
-  		};
+				scope.$on('tag_USD', function(event, data) {
+					console.log('inside'+data);
+				      	var context = iElement[0].getContext('2d');
+					context.fillStyle = '#0000FF';
+					var counter = data;
+					var i = setInterval(function(){
+					    context.fillRect(150,400,50,-(data-counter));
+					    counter--;
+					    if(counter === 0) {
+						clearInterval(i);
+					    }
+					}, 5);					
+						
+				});
+				scope.$on('tag_Grams', function(event, data) {
+					console.log('inside'+data);
+				      	var context = iElement[0].getContext('2d');
+					context.fillStyle = '#0099FF';
+					var counter = data;
+					var i = setInterval(function(){
+					    context.fillRect(350,400,50,-(data-counter));
+					    counter--;
+					    if(counter === 0) {
+						clearInterval(i);
+					    }
+					}, 55);					
+						
+				});
+				}
+  			};
 	}]); 

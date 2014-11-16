@@ -2,7 +2,7 @@
 
 angular.module('ajsApp')
   .controller('TestCtrl', function ($scope) {
-    $scope.todoList = [{todoText:'Clean House', done:false}];
+    $scope.todoList = [{todoText:'Feed Bunny', done:false}];
 
     $scope.todoAdd = function() {
         $scope.todoList.push({todoText:$scope.todoInput, done:false});

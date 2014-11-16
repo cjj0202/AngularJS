@@ -21,8 +21,8 @@ angular.module('ajsApp')
 	 $scope.Grams = parseInt($scope.currencies.BTC.Grams, 10);
 	 $rootScope.USD =$scope.USD;
 	 $rootScope.$broadcast('tag',$scope.USD);
-	 console.log(data); 
-	 console.log($rootScope.USD); 
+	// console.log(data); 
+	// console.log($rootScope.USD); 
 	})
         .error(function (data, status, headers, config){
           $scope.simpleGetCallResult = logResult('GET ERROR', data, status, headers, config);

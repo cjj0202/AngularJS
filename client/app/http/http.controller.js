@@ -19,8 +19,9 @@ angular.module('ajsApp')
 	 $scope.USD = parseInt($scope.currencies.BTC.USD, 10);
 	 $scope.Ounces = parseInt($scope.currencies.BTC.Ounces, 10);
 	 $scope.Grams = parseInt($scope.currencies.BTC.Grams, 10);
-	 $rootScope.USD =$scope.USD;
-	 $rootScope.$broadcast('tag',$scope.USD);
+	// $rootScope.USD =$scope.USD;
+	 $rootScope.$broadcast('tag_USD',$scope.USD);
+	 $rootScope.$broadcast('tag_Grams',$scope.Grams);
 	// console.log(data); 
 	// console.log($rootScope.USD); 
 	})

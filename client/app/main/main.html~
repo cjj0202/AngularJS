@@ -16,50 +16,53 @@ Full Name: {{firstName + " " + lastName}}
 -->
 
 
-<div ng-app="ajsApp" ng-controller="DrawCtrl">
+<div id="main-wrap">
+    <div id="sidebar">
+	<div class="container">
+	<h3>1 BitCoin Spot Price(Live JSON data from <a href="http://coinabul.com/">Coinabul</a>)</h3>
 
-<canvas width="600" height="400" style="border:1px solid #c3c3c3;" circle-draw></canvas>
+		<div ng-app="ajsApp" ng-controller="DrawCtrl">
+			<canvas width="600" height="400" style="border:1px solid #c3c3c3;" chart-draw></canvas>
+		</div>
 
-</div>
-
-<div ng-app="ajsApp" ng-controller="HttpCtrl">
-
-<ul>
-  <li >
-    {{ 'USD:'+ currencies.BTC.USD }}
-  </li>
-  <li >
-    {{ 'Gold Ounces:'+ currencies.BTC.Ounces }}
-  </li>
-  <li >
-    {{ 'Gold Grams:'+ currencies.BTC.Grams }}
-  </li>
-</ul> 
-<!--
-<textarea class="logTextArea">{{simpleGetCallResult}}</textarea>
--->
-<p ng-show = error>Error!</p>
-</div>
-
-
-
-<div ng-app="ajsApp" ng-controller="TestCtrl">
-	<h2>My Todo List</h2>
-
-	<form ng-submit="todoAdd()">
-	    <input type="text" ng-model="todoInput" size="50" placeholder="Add New">
-	    <input type="submit" value="Add New">
-	</form>
-
-	<br>
-
-	<div ng-repeat="x in todoList">
-	    <input type="checkbox" ng-model="x.done"> <span ng-bind="x.todoText"></span>
+		<div ng-app="ajsApp" ng-controller="HttpCtrl">
+			<div class="col-sm-7">
+			<table class="table table-striped">
+			  <tbody>
+			  <td>
+			    <span class="glyphicon glyphicon-usd">{{'USD:'+ currencies.BTC.USD }}</span>
+			  </td>
+			  <td>
+			    <span class="glyphicon glyphicon-usd">{{ 'Gold(Grams):'+ currencies.BTC.Grams }}</span>
+			  </td></tbody>
+			</table> 
+			</div>
+		<!--
+		<textarea class="logTextArea">{{simpleGetCallResult}}</textarea>
+		-->
+			<p ng-show = error>Error!</p>
+		</div>
 	</div>
+    </div>
+	<div id="content-wrap">
+		<div ng-app="ajsApp" ng-controller="TestCtrl">
+			<h3>My Todo List</h3>
 
-	<p><button ng-click="remove()">Remove marked</button></p>
+			<form ng-submit="todoAdd()">
+			    <input type="text" ng-model="todoInput" size="50" placeholder="Add New">
+			    <input type="submit" value="Add New">
+			</form>
+
+			<br>
+
+			<div ng-repeat="x in todoList">
+			    <input type="checkbox" ng-model="x.done"> <span ng-bind="x.todoText"></span>
+			</div>
+
+			<p><button ng-click="remove()">Remove marked</button></p>
+		</div>
+	</div>
 </div>
-
 </body>
 
 <footer class="footer">
