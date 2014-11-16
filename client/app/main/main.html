@@ -1,25 +1,63 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <head>
-<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 </head>
 
 <body>
 
-<div ng-app="">
-  <p>Name: <input type="text" ng-model="name"></p>
-  <p ng-bind="name"></p>
+<!--
+<div ng-app="ajsApp" ng-controller="UserCtrl">
+
+First Name: <input type="text" ng-model="firstName"><br>
+Last Name: <input type="text" ng-model="lastName"><br>
+<br>
+Full Name: {{firstName + " " + lastName}}
+</div>
+-->
+
+
+<div ng-app="ajsApp" ng-controller="DrawCtrl">
+
+<canvas width="600" height="400" style="border:1px solid #c3c3c3;" chart-draw></canvas>
+
 </div>
 
+<div ng-app="ajsApp" ng-controller="HttpCtrl">
+
+<ul>
+  <li >
+    {{ 'USD:'+ currencies.BTC.USD }}
+  </li>
+  <li >
+    {{ 'Gold Ounces:'+ currencies.BTC.Ounces }}
+  </li>
+  <li >
+    {{ 'Gold Grams:'+ currencies.BTC.Grams }}
+  </li>
+</ul> 
+<!--
+<textarea class="logTextArea">{{simpleGetCallResult}}</textarea>
+-->
+<p ng-show = error>Error!</p>
+</div>
+
+
+
 <div ng-app="ajsApp" ng-controller="TestCtrl">
+	<h2>My Todo List</h2>
 
-<table>
-  <tr ng-repeat="x in names">
-    <td>{{ x.Name }}</td>
-    <td>{{ x.Country }}</td>
-  </tr>
-</table>
+	<form ng-submit="todoAdd()">
+	    <input type="text" ng-model="todoInput" size="50" placeholder="Add New">
+	    <input type="submit" value="Add New">
+	</form>
 
+	<br>
+
+	<div ng-repeat="x in todoList">
+	    <input type="checkbox" ng-model="x.done"> <span ng-bind="x.todoText"></span>
+	</div>
+
+	<p><button ng-click="remove()">Remove marked</button></p>
 </div>
 
 </body>
@@ -27,7 +65,6 @@
 <footer class="footer">
   <div class="container">
       <p>Angular Fullstack v2.0.13 |
-        <a href="http://www.linkedin.com/pub/jiajie-chen/6a/865/979">Jiajie Chen</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+        <a href="http://www.linkedin.com/pub/jiajie-chen/6a/865/979">Jiajie Chen</a> 
   </div>
 </footer>
